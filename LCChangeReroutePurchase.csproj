@@ -7,8 +7,8 @@
     <ProjectGuid>{ECF36AB4-CBA2-48B5-A7B2-01EC7A631866}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LCFreeReroutePurchase</RootNamespace>
-    <AssemblyName>LCFreeReroutePurchase</AssemblyName>
+    <RootNamespace>LCChangeReroutePurchase</RootNamespace>
+    <AssemblyName>LCChangeReroutePurchase</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LCChangeReroutePurchase
+namespace LCFreeReroutePurchase.Scripts
 {
     public static class SharedData
     {
-        public static int currentDaysSpent { get; set; }
+        public static EndOfGameStats GameStats { get; set; }
     }
 }

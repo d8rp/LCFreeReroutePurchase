@@ -5,24 +5,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LCChangeReroutePurchase.Patches
+namespace LCFreeReroutePurchase.Patches
 {
     [HarmonyPatch(typeof(StartOfRound))]
-    internal class StartOfRoundPatch
+    internal class GetCurrentDayPatch
     {
         [HarmonyPatch("EndOfGame")]
         [HarmonyPostfix]
-        static void GetCurrentDay(ref StartOfRound __instance, ref EndOfGameStats ___gameStats)
+        static void GetCurrentDay(ref StartOfRound __instance, EndOfGameStats gameStats)
         {
             // Change the current days spent every end of a round
-            SharedData.currentDaysSpent = ___gameStats.daysSpent;
+            SharedData.currentDaysSpent = gameStats.daysSpent;
         }
         [HarmonyPatch("SetTimeAndPlanetToSavedSettings")]
         [HarmonyPostfix]
-        static void LoadCurrentDay(ref StartOfRound __instance, ref EndOfGameStats ___gameStats)
+        static void LoadCurrentDay(ref StartOfRound __instance, EndOfGameStats gameStats)
         {
             // Change the current days spent every time a new save is loaded
-            SharedData.currentDaysSpent = ___gameStats.daysSpent;
-        }
+            SharedData.currentDaysSpent = gameStats.daysSpent;
+        }  
     }
 }

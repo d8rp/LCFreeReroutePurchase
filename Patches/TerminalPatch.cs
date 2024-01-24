@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LCFreeReroutePurchase.Patches
+namespace LCChangeReroutePurchase.Patches
 {
     [HarmonyPatch(typeof(Terminal))]
     internal class TerminalPatch
@@ -16,10 +16,10 @@ namespace LCFreeReroutePurchase.Patches
         {
             if (node.buyRerouteToMoon != -1)
             {
-                if (SharedData.currentDaysSpent < 3)
-                    node.itemCost = 0;
+                if (SharedData.currentDaysSpent < TutorialModBase.Instance.configFreeRerouteUntil.Value)
+                    node.itemCost = TutorialModBase.Instance.configRerouteCostBefore.Value;
                 else
-                    node.itemCost = 500;
+                    node.itemCost = TutorialModBase.Instance.configRerouteCostAfter.Value;
             }
         }
         [HarmonyPatch("LoadNewNode")]
@@ -28,10 +28,10 @@ namespace LCFreeReroutePurchase.Patches
         {
             if (node.buyRerouteToMoon != -1)
             {
-                if (SharedData.currentDaysSpent < 3)
-                    ___totalCostOfItems = 0;
+                if (SharedData.currentDaysSpent < TutorialModBase.Instance.configFreeRerouteUntil.Value)
+                    ___totalCostOfItems = TutorialModBase.Instance.configRerouteCostBefore.Value;
                 else
-                    ___totalCostOfItems = 500;
+                    ___totalCostOfItems = TutorialModBase.Instance.configRerouteCostAfter.Value;
             }
         }
     }

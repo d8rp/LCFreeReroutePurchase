@@ -39,6 +39,5 @@ namespace LCFreeReroutePurchase
             harmony.PatchAll(typeof(TerminalPatch));
             harmony.PatchAll(typeof(TutorialModBase));
         }
-        }
     }
 }

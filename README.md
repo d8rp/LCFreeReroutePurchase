@@ -1,6 +1,7 @@
 # LCFreeReroutePurchase
-This mod allows the players to go to Rend, Dine and Titan for free!
-
+This mod allows the players to go to Rend, Dine and Titan for free for the first three days!
+Cost to reroute can be edited in the config files along with the days that they are still free.
+You can also specify the cost before and after the day in the config file.
 
 The mod makes rerouting to other moons free no matter what so this will make custom maps free aswell, so be careful!
 

@@ -16,7 +16,10 @@ namespace LCFreeReroutePurchase.Patches
         {
             if (node.buyRerouteToMoon != -1)
             {
-                node.itemCost = 0;
+                if (SharedData.currentDaysSpent < 3)
+                    node.itemCost = 0;
+                else
+                    node.itemCost = 500;
             }
         }
         [HarmonyPatch("LoadNewNode")]
@@ -25,7 +28,10 @@ namespace LCFreeReroutePurchase.Patches
         {
             if (node.buyRerouteToMoon != -1)
             {
-                ___totalCostOfItems = 0;
+                if (SharedData.currentDaysSpent < 3)
+                    ___totalCostOfItems = 0;
+                else
+                    ___totalCostOfItems = 500;
             }
         }
     }

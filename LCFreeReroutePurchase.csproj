@@ -48,6 +48,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="Unity.Netcode.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="UnityEngine">
       <HintPath>D:\Lethal Company mod developemnt\Lethal Company_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
@@ -56,9 +57,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Patches\StartOfRoundPatch.cs" />
     <Compile Include="Patches\TerminalPatch.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SharedData.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

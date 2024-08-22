@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Unity.Netcode;
 
 namespace LCChangeReroutePurchase
 {
@@ -23,7 +24,7 @@ namespace LCChangeReroutePurchase
 
         public static TutorialModBase Instance { get; private set; }
 
-        internal ManualLogSource mls;
+        internal static ManualLogSource mls;
 
         // Configs
         public ConfigEntry<int> configRerouteCostBefore;
@@ -43,22 +44,26 @@ namespace LCChangeReroutePurchase
 
             configRerouteCostBefore = Config.Bind("General",      // The section under which the option is shown
                                             "DefaultCostBefore",  // The key of the configuration option in the configuration file
-                                            0,            // The default value
+                                            0,                      // The default value
                                             "The cost to reroute to ALL moons before the date in [FreeRerouteUntilInDays]."); // Description of the option to show in the config file
 
             configRerouteCostAfter = Config.Bind("General",      // The section under which the option is shown
                                             "DefaultCostAfter",  // The key of the configuration option in the configuration file
-                                            500,            // The default value
-                                            "The cost to reroute to ALL moons after the date in [FreeRerouteUntilInDays]."); // Description of the option to show in the config file
+                                            0,                // The default value
+                                            "The cost to reroute to ALL moons after the date in [RerouteUntilInDays]."); // Description of the option to show in the config file
 
-            configFreeRerouteUntil = Config.Bind("General",         // The section under which the option is shown
-                                                 "FreeRerouteUntilInDays", // The key of the configuration option in the configuration file
-                                                 3,                  // The default value
-                                                 "The number of free reroutes allowed."); // Description of the option to show in the config file
+            configFreeRerouteUntil = Config.Bind("General",                 // The section under which the option is shown
+                                                 "RerouteUntilInDays", // The key of the configuration option in the configuration file
+                                                 3,                         // The default value
+                                                 "The number of days until reroute pirce change."); // Description of the option to show in the config file
 
             harmony.PatchAll(typeof(StartOfRoundPatch));
             harmony.PatchAll(typeof(TerminalPatch));
             harmony.PatchAll(typeof(TutorialModBase));
+        }
+        private bool IsHost()
+        {
+            return ((NetworkBehaviour)RoundManager.Instance).IsHost;
         }
     }
 }
